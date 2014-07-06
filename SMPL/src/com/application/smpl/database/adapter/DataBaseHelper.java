@@ -8,6 +8,7 @@ import android.util.Log;
 
 public class DataBaseHelper extends SQLiteOpenHelper
 {
+	StartUpDataBaseAdapter DB;
     public DataBaseHelper(Context context, String name, CursorFactory factory, int version) 
     {
                super(context, name, factory, version);
@@ -20,7 +21,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
             _db.execSQL(DBAdapter.CREATE_TABLE_SHOPPINGLIST);
             _db.execSQL(DBAdapter.CREATE_TABLE_FOODTYPE);
             _db.execSQL(DBAdapter.CREATE_TABLE_MASTERLISTOFPRODUCTS);
-            _db.execSQL(DBAdapter.CREATE_TABLE_MLSLPRODUCTS);            
+            _db.execSQL(DBAdapter.CREATE_TABLE_MLSLPRODUCTS);  
     }
     // Called when there is a database version mismatch meaning that the version
     // of the database on disk needs to be upgraded to the current version.
@@ -34,13 +35,12 @@ public class DataBaseHelper extends SQLiteOpenHelper
             // previous versions can be handled by comparing _oldVersion and _newVersion
             // values.
             // The simplest case is to drop the old table and create a new one.
-            _db.execSQL("DROP TABLE IF EXISTS " + DBAdapter.CREATE_TABLE_MASTERLISTOFPRODUCTS);
-            _db.execSQL("DROP TABLE IF EXISTS " + DBAdapter.CREATE_TABLE_SHOPPINGLIST);
-            _db.execSQL("DROP TABLE IF EXISTS " + DBAdapter.CREATE_TABLE_FOODTYPE);
-            _db.execSQL("DROP TABLE IF EXISTS " + DBAdapter.CREATE_TABLE_MLSLPRODUCTS);
+            _db.execSQL("DROP TABLE IF EXISTS " + DBAdapter.TABLE_MASTERLISTOFPRODUCTS);
+            _db.execSQL("DROP TABLE IF EXISTS " + DBAdapter.TABLE_FOODTYPE);
+            _db.execSQL("DROP TABLE IF EXISTS " + DBAdapter.TABLE_MLSLPRODUCTS);
+            _db.execSQL("DROP TABLE IF EXISTS " + DBAdapter.TABLE_SHOPPINGLIST);
             // Create a new one.
             onCreate(_db);
     }
-
 }
 

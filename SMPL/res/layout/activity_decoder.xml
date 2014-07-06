@@ -7,7 +7,8 @@
     <com.dlazaro66.qrcodereaderview.QRCodeReaderView
         android:id="@+id/qrdecoderview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="300dp"
+        android:layout_above="@+id/button_qrsave"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true" />
 
@@ -28,5 +29,14 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/exampleTextView"
         android:src="@drawable/red_line" />
+
+    <Button
+        android:id="@+id/button_qrsave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:text="Save to List" />
 
 </RelativeLayout>

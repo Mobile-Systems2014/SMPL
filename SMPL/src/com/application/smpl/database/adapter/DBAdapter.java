@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class DBAdapter {
 	static final String DATABASE_NAME = "SMPL.db";
-	static final int DATABASE_VERSION = 1;
+	static final int DATABASE_VERSION = 7;
 	
 	public static final String TABLE_MASTERLISTOFPRODUCTS = "MASTERLISTOFPRODUCTS";
 	public static final String TABLE_SHOPPINGLIST = "SHOPPINGLIST";
@@ -15,10 +15,11 @@ public class DBAdapter {
 	
 	//MASTER LIST table columns
     public static final String MASTERLISTOFPRODUCTS_COLUMN_MLID = "MLID";
-    public static final String MASTERLISTOFPRODUCTS_COLUMN_LISTNAME = "LISTNAME";
+    public static final String MASTERLISTOFPRODUCTS_COLUMN_PRODUCTNAME = "PRODUCTNAME";
     public static final String MASTERLISTOFPRODUCTS_COLUMN_PRICE = "PRICE";
     public static final String MASTERLISTOFPRODUCTS_COLUMN_PRODUCTCODE = "PRODUCTCODE";
     public static final String MASTERLISTOFPRODUCTS_COLUMN_TYPE = "TYPE";
+    public static final String MASTERLISTOFPRODUCTS_COLUMN_ISLE = "ISLE";
     
     //SHOPPING LIST table columns
     public static final String SHOPPINGLIST_COLUMN_LISTID = "LISTID";
@@ -34,19 +35,23 @@ public class DBAdapter {
     public static final String MLSLPRODUCTS_COLUMN_QUANTITY = "QUANTITY";
     public static final String MLSLPRODUCTS_COLUMN_MLID = "MLID";
     
-
-//    public static String[] LOGIN_ALLCOLUMNS= {LOGIN_COLUMN_ID,LOGIN_COLUMN_USERNAME,LOGIN_COLUMN_PASSWORD,LOGIN_COLUMN_EMAIL,
-//    											INFO_COLUMN_FIRSTNAME,INFO_COLUMN_LASTNAME,INFO_COLUMN_WEIGHT,INFO_COLUMN_HEIGHT,INFO_COLUMN_PIN};
+	public static String[] MASTERLISTOFPRODUCTS_ALLCOLUMNS = {
+			MASTERLISTOFPRODUCTS_COLUMN_MLID,
+			MASTERLISTOFPRODUCTS_COLUMN_PRODUCTNAME,
+			MASTERLISTOFPRODUCTS_COLUMN_PRICE,
+			MASTERLISTOFPRODUCTS_COLUMN_PRODUCTCODE,
+			MASTERLISTOFPRODUCTS_COLUMN_TYPE, MASTERLISTOFPRODUCTS_COLUMN_ISLE };
 	
     // TODO: Create public field for each column in your table.
     // SQL Statement to create a new database.
     static final String CREATE_TABLE_MASTERLISTOFPRODUCTS = " create table " 
     		+ TABLE_MASTERLISTOFPRODUCTS + "("
     		+ MASTERLISTOFPRODUCTS_COLUMN_MLID + " integer primary key autoincrement, " 
-    		+ MASTERLISTOFPRODUCTS_COLUMN_LISTNAME + " text, "
+    		+ MASTERLISTOFPRODUCTS_COLUMN_PRODUCTNAME + " text, "
     		+ MASTERLISTOFPRODUCTS_COLUMN_PRICE + " decimal default 1, "
     		+ MASTERLISTOFPRODUCTS_COLUMN_PRODUCTCODE + " text, "
-    		+ MASTERLISTOFPRODUCTS_COLUMN_TYPE + " text);";
+    		+ MASTERLISTOFPRODUCTS_COLUMN_ISLE + " text, "
+    		+ MASTERLISTOFPRODUCTS_COLUMN_TYPE + " integer);";
     
     static final String CREATE_TABLE_SHOPPINGLIST = " create table " 
     		+ TABLE_SHOPPINGLIST + "("
@@ -60,10 +65,9 @@ public class DBAdapter {
     
     static final String CREATE_TABLE_MLSLPRODUCTS = " create table " 
     		+ TABLE_MLSLPRODUCTS + "("
-    		+ MLSLPRODUCTS_COLUMN_LISTID + " integer primary key autoincrement, " 
-    		+ MLSLPRODUCTS_COLUMN_LISTNAME + " text, " 
+    		+ MLSLPRODUCTS_COLUMN_LISTID + " integer, " 
 			+ MLSLPRODUCTS_COLUMN_QUANTITY + " numeric default 0, "
-    		+ MLSLPRODUCTS_COLUMN_MLID + " text);";
+    		+ MLSLPRODUCTS_COLUMN_MLID + " text, primary key(" + MLSLPRODUCTS_COLUMN_LISTID + "," + MLSLPRODUCTS_COLUMN_MLID + "));";
     
     
 	// Variable to hold the database instance

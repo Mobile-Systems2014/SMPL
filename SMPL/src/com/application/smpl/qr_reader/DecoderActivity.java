@@ -3,11 +3,16 @@ package com.application.smpl.qr_reader;
 import android.app.Activity;
 import android.graphics.PointF;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.application.smpl.database.adapter.StartUpDataBaseAdapter;
 import com.dlazaro66.qrcodereaderview.QRCodeReaderView;
 import com.dlazaro66.qrcodereaderview.QRCodeReaderView.OnQRCodeReadListener;
 import com.example.smpl.R;
@@ -17,6 +22,8 @@ public class DecoderActivity extends Activity implements OnQRCodeReadListener {
     private TextView myTextView;
 	private QRCodeReaderView mydecoderview;
 	private ImageView line_image;
+	private Button save;
+	private StartUpDataBaseAdapter DB;
 
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +47,11 @@ public class DecoderActivity extends Activity implements OnQRCodeReadListener {
        mAnimation.setRepeatMode(Animation.REVERSE);
        mAnimation.setInterpolator(new LinearInterpolator());
        line_image.setAnimation(mAnimation);
+       
+     //Initilize DB
+		DB = new StartUpDataBaseAdapter(getApplicationContext());
         
+       save = (Button) findViewById(R.id.button_qrsave);
     }
 
     
@@ -48,12 +59,19 @@ public class DecoderActivity extends Activity implements OnQRCodeReadListener {
     // "text" : the text encoded in QR
     // "points" : points where QR control points are placed
 	@Override
-	public void onQRCodeRead(String text, PointF[] points) {
+	public void onQRCodeRead(final String text, PointF[] points) {
 		myTextView.setText(text);
+		save.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				DB.SaveToList(text);
+			}
+		});
 	}
 
 	
-	// Called when your device have no camera
+	// Called when your device has no camera
 	@Override
 	public void cameraNotFound() {
 		

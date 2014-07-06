@@ -1,8 +1,15 @@
 package com.example.smpl;
 
+import com.application.smpl.database.adapter.StartUpDataBaseAdapter;
+import com.application.smpl.qr_reader.DecoderActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 /**
  * An activity representing a list of objects. This activity has different
@@ -19,59 +26,80 @@ import android.support.v4.app.FragmentActivity;
  * This activity also implements the required
  * {@link objectListFragment.Callbacks} interface to listen for item selections.
  */
-public class objectListActivity extends FragmentActivity implements
-		objectListFragment.Callbacks {
+public class objectListActivity extends FragmentActivity{
 
 	/**
 	 * Whether or not the activity is in two-pane mode, i.e. running on a tablet
 	 * device.
 	 */
 	private boolean mTwoPane;
+	Button dataBase, map;
+	StartUpDataBaseAdapter DB;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_object_list);
+		setContentView(R.layout.activity_main);
+	    //Initialize DB
+		DB = new StartUpDataBaseAdapter(this);
+		//Create master list of products
+		DB.InsertpTypes();
+		DB.InsertProducts();
+		
+/*		dataBase = (Button) findViewById(R.id.button_main_database);
+		map = (Button) findViewById(R.id.button_main_interactivemap);
 
-		if (findViewById(R.id.object_detail_container) != null) {
-			// The detail container view will be present only in the
-			// large-screen layouts (res/values-large and
-			// res/values-sw600dp). If this view is present, then the
-			// activity should be in two-pane mode.
-			mTwoPane = true;
+		dataBase.setOnClickListener(new View.OnClickListener() {
 
-			// In two-pane mode, list items should be given the
-			// 'activated' state when touched.
-			((objectListFragment) getSupportFragmentManager().findFragmentById(
-					R.id.object_list)).setActivateOnItemClick(true);
-		}
+			@Override
+			public void onClick(View v) {
+				Intent intentStart = new Intent(getApplicationContext(),DecoderActivity.class);
+				startActivity(intentStart);
+			}
+		});
+		
+		map.setOnClickListener(new View.OnClickListener() {
 
-		// TODO: If exposing deep links into your app, handle intents here.
+			@Override
+			public void onClick(View v) {
+				Intent intentStart = new Intent(getApplicationContext(),DecoderActivity.class);
+				startActivity(intentStart);
+			}
+		});*/
+		
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.settings, menu);
+		return true;
 	}
 
-	/**
-	 * Callback method from {@link objectListFragment.Callbacks} indicating that
-	 * the item with the given ID was selected.
-	 */
 	@Override
-	public void onItemSelected(String id) {
-		if (mTwoPane) {
-			// In two-pane mode, show the detail view in this activity by
-			// adding or replacing the detail fragment using a
-			// fragment transaction.
-			Bundle arguments = new Bundle();
-			arguments.putString(objectDetailFragment.ARG_ITEM_ID, id);
-			objectDetailFragment fragment = new objectDetailFragment();
-			fragment.setArguments(arguments);
-			getSupportFragmentManager().beginTransaction()
-					.replace(R.id.object_detail_container, fragment).commit();
-
-		} else {
-			// In single-pane mode, simply start the detail activity
-			// for the selected item ID.
-			Intent detailIntent = new Intent(this, objectDetailActivity.class);
-			detailIntent.putExtra(objectDetailFragment.ARG_ITEM_ID, id);
-			startActivity(detailIntent);
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// toggle nav drawer on selecting action bar app icon/title
+		int selected = item.getItemId();
+		final int settings = R.id.action_scanner;
+		final int dbdebug = R.id.action_dbdebug;
+		if(selected == settings)
+		{
+			Intent intentStart = new Intent(getApplicationContext(),DecoderActivity.class);
+			startActivity(intentStart);
+			finish();
+			return true;
+		}
+		if(selected == dbdebug)
+		{
+			Intent intentStart = new Intent(getApplicationContext(),DatabaseDebug.class);
+			startActivity(intentStart);
+			return true;
+		}
+		// Handle action bar actions click
+		switch (item.getItemId()) {
+		case R.id.action_scanner:
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
 		}
 	}
 }
