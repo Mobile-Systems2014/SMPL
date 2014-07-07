@@ -15,6 +15,18 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:buttonStyle">@style/Button</item>
     </style>
 
+    <style name="Button" parent="android:Widget.Button">
+        <item name="android:background">@drawable/map_button_border</item>
+
+    </style>
+
+    <style name="CenterAilseButton" parent="Button">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_weight">0.03</item>
+
+    </style>
 </resources>

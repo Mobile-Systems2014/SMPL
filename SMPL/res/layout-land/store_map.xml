@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/smpl_background"
+    >
+
+    <LinearLayout
+        android:id="@+id/back_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        >
+
+
+    <Button
+        android:id="@+id/area_1"
+
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_weight="0.3"
+        style="@style/Button"
+        android:onClick="onClick"
+        android:text="1"/>
+
+    <Button
+        android:id="@+id/area_2"
+
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_weight="0.2"
+        android:layout_gravity="top"
+        style="@style/Button"
+        android:onClick="onClick"
+        android:text="2"/>
+
+    <Button
+        android:id="@+id/area_3"
+
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_weight="0.2"
+        android:layout_gravity="top"
+        style="@style/Button"
+        android:onClick="onClick"
+        android:text="3"/>
+
+
+    <Button
+        android:id="@+id/area_4"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_weight="0.3"
+        style="@style/Button"
+        android:onClick="onClick"
+        android:text="4"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/center_aisle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/back_row"
+        android:gravity="center"
+        android:layout_margin="40dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/area_5"
+            style="@style/CenterAilseButton"
+            android:onClick="onClick"
+            android:text="5"/>
+
+        <Button
+            android:id="@+id/area_6"
+            style="@style/CenterAilseButton"
+            android:onClick="onClick"
+            android:text="6"/>
+
+        <Button
+            android:id="@+id/area_7"
+            style="@style/CenterAilseButton"
+            android:onClick="onClick"
+            android:text="7"/>
+
+        <Button
+            android:id="@+id/area_8"
+            style="@style/CenterAilseButton"
+            android:onClick="onClick"
+            android:text="8"/>
+
+        <Button
+            android:id="@+id/area_9"
+            style="@style/CenterAilseButton"
+            android:onClick="onClick"
+            android:text="9"/>
+
+        <Button
+            android:id="@+id/area_10"
+            style="@style/CenterAilseButton"
+            android:onClick="onClick"
+            android:text="10"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

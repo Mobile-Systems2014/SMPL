@@ -46,26 +46,26 @@ public class objectListActivity extends FragmentActivity{
 		DB.InsertpTypes();
 		DB.InsertProducts();
 		
-/*		dataBase = (Button) findViewById(R.id.button_main_database);
+		//dataBase = (Button) findViewById(R.id.button_main_database);
 		map = (Button) findViewById(R.id.button_main_interactivemap);
 
-		dataBase.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				Intent intentStart = new Intent(getApplicationContext(),DecoderActivity.class);
-				startActivity(intentStart);
-			}
-		});
+//		dataBase.setOnClickListener(new View.OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//				Intent intentStart = new Intent(getApplicationContext(),DecoderActivity.class);
+//				startActivity(intentStart);
+//			}
+//		});
 		
 		map.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				Intent intentStart = new Intent(getApplicationContext(),DecoderActivity.class);
+				Intent intentStart = new Intent(getApplicationContext(),StoreMap.class);
 				startActivity(intentStart);
 			}
-		});*/
+		});
 		
 	}
 	
