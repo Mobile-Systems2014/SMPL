@@ -46,17 +46,7 @@ public class objectListActivity extends FragmentActivity{
 		DB.InsertpTypes();
 		DB.InsertProducts();
 		
-		//dataBase = (Button) findViewById(R.id.button_main_database);
 		map = (Button) findViewById(R.id.button_main_interactivemap);
-
-//		dataBase.setOnClickListener(new View.OnClickListener() {
-//
-//			@Override
-//			public void onClick(View v) {
-//				Intent intentStart = new Intent(getApplicationContext(),DecoderActivity.class);
-//				startActivity(intentStart);
-//			}
-//		});
 		
 		map.setOnClickListener(new View.OnClickListener() {
 
@@ -85,7 +75,6 @@ public class objectListActivity extends FragmentActivity{
 		{
 			Intent intentStart = new Intent(getApplicationContext(),DecoderActivity.class);
 			startActivity(intentStart);
-			finish();
 			return true;
 		}
 		if(selected == dbdebug)

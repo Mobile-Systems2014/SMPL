@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class DBAdapter {
 	static final String DATABASE_NAME = "SMPL.db";
-	static final int DATABASE_VERSION = 7;
+	static final int DATABASE_VERSION = 2;
 	
 	public static final String TABLE_MASTERLISTOFPRODUCTS = "MASTERLISTOFPRODUCTS";
 	public static final String TABLE_SHOPPINGLIST = "SHOPPINGLIST";
@@ -42,6 +42,11 @@ public class DBAdapter {
 			MASTERLISTOFPRODUCTS_COLUMN_PRODUCTCODE,
 			MASTERLISTOFPRODUCTS_COLUMN_TYPE, MASTERLISTOFPRODUCTS_COLUMN_ISLE };
 	
+	public static String[] MLSLPRODUCTS_ALLCOLUMNS = {
+			MLSLPRODUCTS_COLUMN_LISTNAME,
+			MLSLPRODUCTS_COLUMN_QUANTITY,
+			MLSLPRODUCTS_COLUMN_MLID };
+	
     // TODO: Create public field for each column in your table.
     // SQL Statement to create a new database.
     static final String CREATE_TABLE_MASTERLISTOFPRODUCTS = " create table " 
@@ -66,6 +71,7 @@ public class DBAdapter {
     static final String CREATE_TABLE_MLSLPRODUCTS = " create table " 
     		+ TABLE_MLSLPRODUCTS + "("
     		+ MLSLPRODUCTS_COLUMN_LISTID + " integer, " 
+    		+ MLSLPRODUCTS_COLUMN_LISTNAME + " text, "
 			+ MLSLPRODUCTS_COLUMN_QUANTITY + " numeric default 0, "
     		+ MLSLPRODUCTS_COLUMN_MLID + " text, primary key(" + MLSLPRODUCTS_COLUMN_LISTID + "," + MLSLPRODUCTS_COLUMN_MLID + "));";
     

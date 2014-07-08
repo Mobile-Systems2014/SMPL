@@ -94,8 +94,7 @@ public class StartUpDataBaseAdapter {
 			mylist.add(map);
 			c.moveToNext();
 		}
-/*		
-		 if (c.moveToFirst()) {
+/*		 if (c.moveToFirst()) {
 		        do {
 		            HashMap<String, String> map = new HashMap<String, String>();
 		            for(int i=0; i<c.getColumnCount();i++)
@@ -111,33 +110,74 @@ public class StartUpDataBaseAdapter {
 		    return maplist;*/  
 		return mylist;
 	}
-	
+
+	public ArrayList<HashMap<String, String>> GetShoppingList() {
+		ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();
+		String where = null;
+		Cursor c = db.query(true, DBAdapter.TABLE_MLSLPRODUCTS,
+				DBAdapter.MLSLPRODUCTS_ALLCOLUMNS, where, null, null, null,
+				null, null);
+		if (c != null) {
+			c.moveToFirst();
+		}
+
+		while (c.isAfterLast() == false) {
+			HashMap<String, String> map = new HashMap<String, String>();
+
+			String itemQuantity = c.getString(c
+					.getColumnIndex(DBAdapter.MLSLPRODUCTS_COLUMN_QUANTITY));
+			String product = c.getString(c
+					.getColumnIndex(DBAdapter.MLSLPRODUCTS_COLUMN_MLID));
+
+			map.put("Quantity: ", itemQuantity);
+			map.put("Product", String.valueOf(product));
+			mylist.add(map);
+			c.moveToNext();
+		}
+		return mylist;
+	}
+
 	public void SaveToList(String product)
 	{
-		ContentValues newValues = new ContentValues();
 		int id = GetProduct(product);
 		boolean update = UpdateOrNah(id);
 		
-		
 		if(update)
 		{
-			// Define the updated row content.
 			ContentValues updatedValues = new ContentValues();
-			int newQuantity;
-			// Assign values for each row.
-			//updatedValues.put(DBAdapter.MLSLPRODUCTS_COLUMN_QUANTITY, newQuantity);
+			int newQuantity = GetQuantity(id) + 1;
+
+			updatedValues.put(DBAdapter.MLSLPRODUCTS_COLUMN_QUANTITY, newQuantity);
 
 			String where = "MLID= ?";
 			db.update(DBAdapter.TABLE_MLSLPRODUCTS, updatedValues, where, new String[] { String.valueOf(id) });
 		}
 		else
 		{
+			ContentValues newValues = new ContentValues();
+			
 			newValues.put(DBAdapter.MLSLPRODUCTS_COLUMN_LISTID, 0);
+			newValues.put(DBAdapter.MLSLPRODUCTS_COLUMN_LISTNAME, "MyList1");
 			newValues.put(DBAdapter.MLSLPRODUCTS_COLUMN_QUANTITY, 1);
 			newValues.put(DBAdapter.MLSLPRODUCTS_COLUMN_MLID, id);
 			
 			db.insert(DBAdapter.TABLE_MLSLPRODUCTS, null, newValues);
 		}
+	}
+	
+	public int GetQuantity(int id)
+	{
+		//TODO check for mlid and listid only supports 1 list right now
+		Cursor cursor = db.query(DBAdapter.TABLE_MLSLPRODUCTS, null, "MLID=?",
+				new String[] { String.valueOf(id) }, null, null, null);
+		if (cursor.getCount() < 1) //not exist
+		{
+			cursor.close();
+		}
+		cursor.moveToFirst();
+		int quantity = cursor.getInt(cursor.getColumnIndex(DBAdapter.MLSLPRODUCTS_COLUMN_QUANTITY));
+		
+		return quantity;
 	}
 	
 	public int GetProduct(String productCode) {
@@ -148,7 +188,7 @@ public class StartUpDataBaseAdapter {
 			cursor.close();
 		}
 		cursor.moveToFirst();
-		int id = cursor.getInt(cursor.getColumnIndex(DBAdapter.MASTERLISTOFPRODUCTS_COLUMN_PRODUCTCODE));
+		int id = cursor.getInt(cursor.getColumnIndex(DBAdapter.MASTERLISTOFPRODUCTS_COLUMN_MLID));
 		String productName = cursor.getString(cursor.getColumnIndex(DBAdapter.MASTERLISTOFPRODUCTS_COLUMN_PRODUCTNAME));
 		cursor.close();
 
@@ -156,6 +196,17 @@ public class StartUpDataBaseAdapter {
 		return id;
 	}
 
+	public boolean UpdateOrNah(int mlId)
+	{
+		Cursor cursor = db.query(DBAdapter.TABLE_MLSLPRODUCTS, null, " MLID=?",
+				new String[] { String.valueOf(mlId)}, null, null, null);
+		if (cursor.getCount() < 1) // Id Not Exist
+		{
+			return false;
+		}
+		return true;
+	}
+	
 	public double GetTotal()
 	{
 		String where = null;
@@ -174,19 +225,6 @@ public class StartUpDataBaseAdapter {
 		return total;
 		
 	}
-	
-	public boolean UpdateOrNah(int mlId)
-	{
-		Cursor cursor = db.query(DBAdapter.TABLE_MLSLPRODUCTS, null, " MLID=?",
-				new String[] { String.valueOf(mlId)}, null, null, null);
-		if (cursor.getCount() < 1) // Id Not Exist
-		{
-			cursor.close();
-			return false;
-		}
-		return true;
-	}
-	
 	
 
 	

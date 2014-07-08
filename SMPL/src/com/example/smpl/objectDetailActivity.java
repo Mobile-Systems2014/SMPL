@@ -47,7 +47,6 @@ public class objectDetailActivity extends FragmentActivity {
 		{
 			Intent intentStart = new Intent(getApplicationContext(),DecoderActivity.class);
 			startActivity(intentStart);
-			finish();
 			return true;
 		}
 		// Handle action bar actions click

@@ -37,7 +37,12 @@ public class DatabaseDebug extends FragmentActivity{
 
 			@Override
 			public void onClick(View v) {
-				//TODO
+				List<HashMap<String, String>> nameList = DB.GetShoppingList();
+
+				adapterList = new ArrayAdapter<HashMap<String, String>>(DatabaseDebug.this, android.R.layout.simple_list_item_1, nameList);
+
+				ListView listView = (ListView) findViewById(R.id.listView_dbdebugger);
+				listView.setAdapter(adapterList);
 			}
 		});
 		

@@ -794,10 +794,11 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f080002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f090003;
+        public static final int abc_search_url_text_holo=0x7f090004;
         public static final int abc_search_url_text_normal=0x7f090000;
         public static final int abc_search_url_text_pressed=0x7f090002;
         public static final int abc_search_url_text_selected=0x7f090001;
+        public static final int smpl_background=0x7f090003;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -973,7 +974,9 @@ containing a value of this type.
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
         public static final int ic_launcher=0x7f020057;
-        public static final int red_line=0x7f020058;
+        public static final int map_button=0x7f020058;
+        public static final int map_button_border=0x7f020059;
+        public static final int red_line=0x7f02005a;
     }
     public static final class id {
         public static final int action_bar=0x7f07001c;
@@ -984,19 +987,31 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f070023;
         public static final int action_bar_title=0x7f070022;
         public static final int action_context_bar=0x7f07001d;
-        public static final int action_dbdebug=0x7f07004d;
+        public static final int action_dbdebug=0x7f070059;
         public static final int action_menu_divider=0x7f070016;
         public static final int action_menu_presenter=0x7f070017;
         public static final int action_mode_close_button=0x7f070024;
-        public static final int action_scanner=0x7f07004c;
+        public static final int action_scanner=0x7f070058;
         public static final int activity_chooser_view_content=0x7f070025;
         public static final int always=0x7f07000b;
+        public static final int area_1=0x7f07004c;
+        public static final int area_10=0x7f070056;
+        public static final int area_2=0x7f07004d;
+        public static final int area_3=0x7f07004e;
+        public static final int area_4=0x7f07004f;
+        public static final int area_5=0x7f070051;
+        public static final int area_6=0x7f070052;
+        public static final int area_7=0x7f070053;
+        public static final int area_8=0x7f070054;
+        public static final int area_9=0x7f070055;
+        public static final int back_row=0x7f07004b;
         public static final int beginning=0x7f070011;
         public static final int button_dbdebuger_allproducts=0x7f07003c;
         public static final int button_dbdebuger_showlist=0x7f07003d;
         public static final int button_dbdebuger_total=0x7f07003e;
         public static final int button_main_interactivemap=0x7f070044;
         public static final int button_qrsave=0x7f070041;
+        public static final int center_aisle=0x7f070050;
         public static final int checkbox=0x7f07002d;
         public static final int collapseActionView=0x7f07000d;
         public static final int default_activity_button=0x7f070028;
@@ -1017,7 +1032,7 @@ containing a value of this type.
         public static final int listMode=0x7f070001;
         public static final int listView_dbdebugger=0x7f07003f;
         public static final int list_item=0x7f070029;
-        public static final int menu_settings=0x7f07004b;
+        public static final int menu_settings=0x7f070057;
         public static final int middle=0x7f070012;
         public static final int never=0x7f070009;
         public static final int none=0x7f070010;
@@ -1127,7 +1142,8 @@ containing a value of this type.
         public static final int activity_object_twopane=0x7f03001c;
         public static final int fragment_object_detail=0x7f03001d;
         public static final int row=0x7f03001e;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001f;
+        public static final int store_map=0x7f03001f;
+        public static final int support_simple_spinner_dropdown_item=0x7f030020;
     }
     public static final class menu {
         public static final int activity_decoder=0x7f0c0000;
@@ -1226,8 +1242,11 @@ containing a value of this type.
  All customizations that are NOT specific to a particular API-level can go here. 
  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
+  <item name="android:buttonStyle">@style/Button</item> 
          */
         public static final int AppTheme=0x7f060001;
+        public static final int Button=0x7f060085;
+        public static final int CenterAilseButton=0x7f060086;
         /**  Mimic text appearance in select_dialog_item.xml 
          */
         public static final int TextAppearance_AppCompat_Base_CompactMenu_Dialog=0x7f060065;
