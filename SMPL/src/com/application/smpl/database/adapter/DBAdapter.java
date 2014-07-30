@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class DBAdapter {
 	static final String DATABASE_NAME = "SMPL.db";
-	static final int DATABASE_VERSION = 2;
+	static final int DATABASE_VERSION = 7;
 	
 	public static final String TABLE_MASTERLISTOFPRODUCTS = "MASTERLISTOFPRODUCTS";
 	public static final String TABLE_SHOPPINGLIST = "SHOPPINGLIST";
