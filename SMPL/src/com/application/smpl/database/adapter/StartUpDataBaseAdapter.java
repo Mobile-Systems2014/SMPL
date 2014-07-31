@@ -28,7 +28,7 @@ public class StartUpDataBaseAdapter {
 		 double[] price = new double[]{2.99,1.00,2.45,1.50,3.89,1.89,1.39,5.99,8.99,4.99};
 		 String[] pCode = new String[]{"112","113","114","115","116","117","118","119","120","121"};
 		 int[] pType = new int[]{6,1,4,6,5,5,5,3,3,2};
-		 String[] isle = new String[]{"1","2","3","1","4","4","4","5","5","6"};
+		 String[] isle = new String[]{"1","2","3","10","4","4","4","7","5","6"};
 		 
 		 long status = 0;
 		 int count = 0;
@@ -94,20 +94,6 @@ public class StartUpDataBaseAdapter {
 			mylist.add(map);
 			c.moveToNext();
 		}
-/*		 if (c.moveToFirst()) {
-		        do {
-		            HashMap<String, String> map = new HashMap<String, String>();
-		            for(int i=0; i<c.getColumnCount();i++)
-		            {
-		                map.put(c.getColumnName(i), cursor.getString(i));
-		            }
-
-		            maplist.add(map);
-		        } while (cursor.moveToNext());
-		    }
-		    db.close();
-		    // return contact list
-		    return maplist;*/  
 		return mylist;
 	}
 
@@ -124,17 +110,24 @@ public class StartUpDataBaseAdapter {
 		while (c.isAfterLast() == false) {
 			HashMap<String, String> map = new HashMap<String, String>();
 
-			String itemQuantity = c.getString(c
-					.getColumnIndex(DBAdapter.MLSLPRODUCTS_COLUMN_QUANTITY));
-			String product = c.getString(c
-					.getColumnIndex(DBAdapter.MLSLPRODUCTS_COLUMN_MLID));
-
+			String itemQuantity = c.getString(c.getColumnIndex(DBAdapter.MLSLPRODUCTS_COLUMN_QUANTITY));
+			String productId = c.getString(c.getColumnIndex(DBAdapter.MLSLPRODUCTS_COLUMN_MLID));
+			String product = getListProductName(productId);
+			
 			map.put("Quantity: ", itemQuantity);
 			map.put("Product", String.valueOf(product));
 			mylist.add(map);
 			c.moveToNext();
 		}
 		return mylist;
+	}
+	
+	public String GetShoppingListByIsle()
+	{
+		
+		
+		return "toDo";
+		
 	}
 
 	public void SaveToList(String product)
@@ -209,24 +202,86 @@ public class StartUpDataBaseAdapter {
 	
 	public double GetTotal()
 	{
+		//get all shopping list
 		String where = null;
 		double total = 0.0;
-		Cursor c = db.query(true, DBAdapter.TABLE_MASTERLISTOFPRODUCTS, DBAdapter.MASTERLISTOFPRODUCTS_ALLCOLUMNS,where, null, null, null, null, null);
+		Cursor c = db.query(true, DBAdapter.TABLE_MLSLPRODUCTS,	DBAdapter.MLSLPRODUCTS_ALLCOLUMNS, where, null, null, null,	null, null);
 		if (c != null) {
 			c.moveToFirst();
 		}
 
 		while (c.isAfterLast() == false) {
-			double price = c.getDouble(c.getColumnIndex(DBAdapter.MASTERLISTOFPRODUCTS_COLUMN_PRICE));
-			total += price;
+			String productId = c.getString(c.getColumnIndex(DBAdapter.MLSLPRODUCTS_COLUMN_MLID));
+			int quantity = c.getInt(c.getColumnIndex(DBAdapter.MLSLPRODUCTS_COLUMN_QUANTITY));
 			
+			for(int index = 0; index < quantity; index++)
+			{
+				double price = getListPrice(productId);
+				total += price;
+			}
 			c.moveToNext();
 		}
 		return total;
-		
 	}
 	
+	//get list product details multiple needed for each property
+	//Price
+	//Name
+	//Isle
+	public double getListPrice(String pId)
+	{
+		double price = 0;
+		Cursor c = db.query(DBAdapter.TABLE_MASTERLISTOFPRODUCTS, null, "MLID=?",new String[] { String.valueOf(pId) }, null, null, null);
+		if (c != null) {
+			c.moveToFirst();
+		}
 
+		while (c.isAfterLast() == false) {
+			price = c.getDouble(c.getColumnIndex(DBAdapter.MASTERLISTOFPRODUCTS_COLUMN_PRICE));
+			c.moveToNext();
+		}
+		return price;
+	}
+	
+	public String getListProductName(String pId)
+	{
+		String name = "";
+		Cursor c = db.query(DBAdapter.TABLE_MASTERLISTOFPRODUCTS, null, "MLID=?",new String[] { String.valueOf(pId) }, null, null, null);
+		if (c != null) {
+			c.moveToFirst();
+		}
+
+		while (c.isAfterLast() == false) {
+			name = c.getString(c.getColumnIndex(DBAdapter.MASTERLISTOFPRODUCTS_COLUMN_PRODUCTNAME));
+			c.moveToNext();
+		}
+		return name;
+	}	
+	
+	public String getListProductIsle(String pId)
+	{
+		String name = "";
+		Cursor c = db.query(DBAdapter.TABLE_MASTERLISTOFPRODUCTS, null, "MLID=?",new String[] { String.valueOf(pId) }, null, null, null);
+		if (c != null) {
+			c.moveToFirst();
+		}
+
+		while (c.isAfterLast() == false) {
+			name = c.getString(c.getColumnIndex(DBAdapter.MASTERLISTOFPRODUCTS_COLUMN_ISLE));
+			c.moveToNext();
+		}
+		return name;
+	}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	public int deleteEntry(String UserName) {

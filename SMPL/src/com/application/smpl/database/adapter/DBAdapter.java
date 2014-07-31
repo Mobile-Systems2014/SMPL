@@ -33,6 +33,7 @@ public class DBAdapter {
     public static final String MLSLPRODUCTS_COLUMN_LISTID = "LISTID";
     public static final String MLSLPRODUCTS_COLUMN_LISTNAME = "LISTNAME";
     public static final String MLSLPRODUCTS_COLUMN_QUANTITY = "QUANTITY";
+    public static final String MSLSPRODUCTS_COLUMN_CHECKED = "CHECKED"; 
     public static final String MLSLPRODUCTS_COLUMN_MLID = "MLID";
     
 	public static String[] MASTERLISTOFPRODUCTS_ALLCOLUMNS = {
@@ -73,6 +74,7 @@ public class DBAdapter {
     		+ MLSLPRODUCTS_COLUMN_LISTID + " integer, " 
     		+ MLSLPRODUCTS_COLUMN_LISTNAME + " text, "
 			+ MLSLPRODUCTS_COLUMN_QUANTITY + " numeric default 0, "
+			+ MSLSPRODUCTS_COLUMN_CHECKED + "integer, "
     		+ MLSLPRODUCTS_COLUMN_MLID + " text, primary key(" + MLSLPRODUCTS_COLUMN_LISTID + "," + MLSLPRODUCTS_COLUMN_MLID + "));";
     
     
