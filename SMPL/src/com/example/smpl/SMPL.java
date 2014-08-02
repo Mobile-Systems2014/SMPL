@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import com.application.smpl.database.adapter.StartUpDataBaseAdapter;
 import com.application.smpl.qr_reader.DecoderActivity;
 import com.example.smpl.fragments.AddDialog;
@@ -97,59 +98,4 @@ public class SMPL extends Activity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
-
-    public void displayItems(int areaNumber){
-        Bundle bundle = new Bundle();
-        bundle.putInt("AreaNumber",areaNumber);
-
-        FragmentManager fm = getFragmentManager();
-
-        AreaDialog areaDialog = new AreaDialog();
-        areaDialog.setArguments(bundle);
-        areaDialog.show(fm, "AreaDialog");
-    }
-
-    // Handles each area clicked
-
-    public void onClick(final View view) {
-
-        switch (view.getId()) {
-            case R.id.area_1:
-                displayItems(1);
-                break;
-            case R.id.area_2:
-                displayItems(2);
-                break;
-            case R.id.area_3:
-                displayItems(3);
-                break;
-            case R.id.area_4:
-                displayItems(4);
-                break;
-            case R.id.area_5:
-                displayItems(5);
-                break;
-            case R.id.area_6:
-                displayItems(6);
-                break;
-            case R.id.area_7:
-                displayItems(7);
-                break;
-            case R.id.area_8:
-                displayItems(8);
-                break;
-            case R.id.area_9:
-                displayItems(9);
-                break;
-            case R.id.area_10:
-                displayItems(10);
-                break;
-        }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
 }
