@@ -1,43 +1,57 @@
 package com.example.smpl;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.example.smpl.fragments.AreaDialog;
 
 /**
  * Created by Richard Sherrill on 7/5/2014.
  */
-public class StoreMap extends Activity {
+public class StoreMap extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.store_map);
 
-        if (getResources().getConfiguration().orientation
-                == Configuration.ORIENTATION_PORTRAIT) {
-            // If the screen is now in landscape mode, we can show the
-            // dialog in-line with the list so we don't need this activity.
-            finish();
-        }
+//        if (getResources().getConfiguration().orientation
+//                == Configuration.ORIENTATION_PORTRAIT) {
+//            // If the screen is now in landscape mode, we can show the
+//            // dialog in-line with the list so we don't need this activity.
+//            //finish();
+//
+//        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.store_map, container, false);
     }
 
     public void displayItems(int areaNumber){
         Bundle bundle = new Bundle();
         bundle.putInt("AreaNumber",areaNumber);
 
-//        AreaDialog areaDialog = new AreaDialog();
-//        areaDialog.setArguments(bundle);
-//        areaDialog.show(getFragmentManager(), "AreaDialog");
+        FragmentManager fm = getActivity().getFragmentManager();
+
+        AreaDialog areaDialog = new AreaDialog();
+        areaDialog.setArguments(bundle);
+        areaDialog.show(fm, "AreaDialog");
     }
 
     // Handles each area clicked
+
     public void onClick(final View view) {
+
         switch (view.getId()) {
             case R.id.area_1:
                 displayItems(1);
