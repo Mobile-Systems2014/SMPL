@@ -28,24 +28,25 @@ public class SMPL extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_page);
+//        setContentView(R.layout.activity_main);
 		// Initialize DB
 		DB = new StartUpDataBaseAdapter(this);
 		// Create master list of products
 		DB.InsertpTypes();
 		DB.InsertProducts();
 
-		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-			// If the screen is now in landscape mode, we can show the
-			// dialog in-line with the list so we don't need this activity.
-			// finish();
-			// todo: check to see if store map fragment is visible, and hide if
-			// it is
-			FragmentManager fragmentManager = getFragmentManager();
-			fragmentManager.beginTransaction();
-
-		} else {
-			// todo: inflate both fragments
-		}
+//		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+//			// If the screen is now in landscape mode, we can show the
+//			// dialog in-line with the list so we don't need this activity.
+//			// finish();
+//			// todo: check to see if store map fragment is visible, and hide if
+//			// it is
+//			FragmentManager fragmentManager = getFragmentManager();
+//			fragmentManager.beginTransaction();
+//
+//		} else {
+//			// todo: inflate both fragments
+//		}
 	}
 
 	@Override
@@ -84,9 +85,10 @@ public class SMPL extends Activity {
 
 		} else if (selected == shop) {
 			Intent intentStart = new Intent(getApplicationContext(),
-					StoreMap.class);
+					Shop.class);
 			startActivity(intentStart);
 			getRequestedOrientation();
+//            setContentView(R.layout.activity_main);
 			return true;
 		}
 		// Handle action bar actions click

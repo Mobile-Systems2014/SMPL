@@ -37,53 +37,53 @@ public class StoreMap extends Fragment {
         return inflater.inflate(R.layout.store_map, container, false);
     }
 
-    public void displayItems(int areaNumber){
-        Bundle bundle = new Bundle();
-        bundle.putInt("AreaNumber",areaNumber);
-
-        FragmentManager fm = getActivity().getFragmentManager();
-
-        AreaDialog areaDialog = new AreaDialog();
-        areaDialog.setArguments(bundle);
-        areaDialog.show(fm, "AreaDialog");
-    }
-
-    // Handles each area clicked
-
-    public void onClick(final View view) {
-
-        switch (view.getId()) {
-            case R.id.area_1:
-                displayItems(1);
-                break;
-            case R.id.area_2:
-                displayItems(2);
-                break;
-            case R.id.area_3:
-                displayItems(3);
-                break;
-            case R.id.area_4:
-                displayItems(4);
-                break;
-            case R.id.area_5:
-                displayItems(5);
-                break;
-            case R.id.area_6:
-                displayItems(6);
-                break;
-            case R.id.area_7:
-                displayItems(7);
-                break;
-            case R.id.area_8:
-                displayItems(8);
-                break;
-            case R.id.area_9:
-                displayItems(9);
-                break;
-            case R.id.area_10:
-                displayItems(10);
-                break;
-        }
-    }
+//    public void displayItems(int areaNumber){
+//        Bundle bundle = new Bundle();
+//        bundle.putInt("AreaNumber",areaNumber);
+//
+//        FragmentManager fm = getActivity().getFragmentManager();
+//
+//        AreaDialog areaDialog = new AreaDialog();
+//        areaDialog.setArguments(bundle);
+//        areaDialog.show(fm, "AreaDialog");
+//    }
+//
+//    // Handles each area clicked
+//
+//    public void onClick(final View view) {
+//
+//        switch (view.getId()) {
+//            case R.id.area_1:
+//                displayItems(1);
+//                break;
+//            case R.id.area_2:
+//                displayItems(2);
+//                break;
+//            case R.id.area_3:
+//                displayItems(3);
+//                break;
+//            case R.id.area_4:
+//                displayItems(4);
+//                break;
+//            case R.id.area_5:
+//                displayItems(5);
+//                break;
+//            case R.id.area_6:
+//                displayItems(6);
+//                break;
+//            case R.id.area_7:
+//                displayItems(7);
+//                break;
+//            case R.id.area_8:
+//                displayItems(8);
+//                break;
+//            case R.id.area_9:
+//                displayItems(9);
+//                break;
+//            case R.id.area_10:
+//                displayItems(10);
+//                break;
+//        }
+//    }
 
 }
