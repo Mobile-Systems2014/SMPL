@@ -46,16 +46,16 @@ public class objectListActivity extends FragmentActivity{
 		DB.InsertpTypes();
 		DB.InsertProducts();
 		
-		map = (Button) findViewById(R.id.button_main_interactivemap);
-		
-		map.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				Intent intentStart = new Intent(getApplicationContext(),StoreMap.class);
-				startActivity(intentStart);
-			}
-		});
+//		map = (Button) findViewById(R.id.button_main_interactivemap);
+//
+//		map.setOnClickListener(new View.OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//				Intent intentStart = new Intent(getApplicationContext(),StoreMap.class);
+//				startActivity(intentStart);
+//			}
+//		});
 		
 	}
 	
