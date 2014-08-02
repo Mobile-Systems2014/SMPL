@@ -4,4 +4,22 @@
     <string name="app_name">SMPL</string>
     <string name="title_object_detail">object Detail</string>
 
+    <string-array name="options_array">
+        <item>QR Scanner</item>
+        <item>Manual</item>
+    </string-array>
+    
+    <string-array name="product_array">
+        <item>apple</item>
+        <item>bread</item>
+        <item>pizza</item>
+        <item>orange</item>
+        <item>milk</item>
+        <item>eggs</item>
+        <item>butter</item>
+        <item>chicken</item>
+        <item>fish</item>
+        <item>sprite</item>
+    </string-array>
+
 </resources>
