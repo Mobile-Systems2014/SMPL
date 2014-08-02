@@ -5,18 +5,12 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import com.application.smpl.database.adapter.StartUpDataBaseAdapter;
 import com.application.smpl.qr_reader.DecoderActivity;
 import com.example.smpl.fragments.AddDialog;
-import com.example.smpl.fragments.AreaDialog;
-import com.example.smpl.fragments.ProductListFragment;
 
 /**
  * Created by Richard Sherrill on 7/24/2014.
@@ -39,22 +33,26 @@ public class SMPL extends Activity {
 		// Create master list of products
 		DB.InsertpTypes();
 		DB.InsertProducts();
-		
-		if (getResources().getConfiguration().orientation
-                == Configuration.ORIENTATION_PORTRAIT) {
-            // If the screen is now in landscape mode, we can show the
-            // dialog in-line with the list so we don't need this activity.
-            //finish();
-            // todo: check to see if store map fragment is visible, and hide if it is
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction();
 
+		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+			// If the screen is now in landscape mode, we can show the
+			// dialog in-line with the list so we don't need this activity.
+			// finish();
+			// todo: check to see if store map fragment is visible, and hide if
+			// it is
+			FragmentManager fragmentManager = getFragmentManager();
+			fragmentManager.beginTransaction();
 
-        } else {
-            // todo: inflate both fragments
-        }
+		} else {
+			// todo: inflate both fragments
+		}
 	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -85,9 +83,10 @@ public class SMPL extends Activity {
 		} else if (selected == share) {
 
 		} else if (selected == shop) {
-			Intent intentStart = new Intent(getApplicationContext(),StoreMap.class);
+			Intent intentStart = new Intent(getApplicationContext(),
+					StoreMap.class);
 			startActivity(intentStart);
-			getRequestedOrientation(); 
+			getRequestedOrientation();
 			return true;
 		}
 		// Handle action bar actions click
