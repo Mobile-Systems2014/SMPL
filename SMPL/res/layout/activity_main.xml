@@ -11,10 +11,10 @@
         <!---->
         <!--android:text="Interactive Map" />-->
 
-    <fragment android:name="com.example.smpl.fragments.ProductListFragment"
-        android:id="@+id/product_list_fragment"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="match_parent" />
+<!--     <fragment android:name="com.example.smpl.fragments.ProductListFragment" -->
+<!--         android:id="@+id/product_list_fragment" -->
+<!--         android:layout_width="0dp" -->
+<!--         android:layout_weight="1" -->
+<!--         android:layout_height="match_parent" /> -->
 
 </LinearLayout>

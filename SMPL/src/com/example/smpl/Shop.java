@@ -1,19 +1,27 @@
 package com.example.smpl;
 
-import android.app.FragmentManager;
+import java.util.HashMap;
+import java.util.List;
+
+import com.application.smpl.database.adapter.StartUpDataBaseAdapter;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
-
-import com.example.smpl.fragments.AreaDialog;
 
 /**
  * Created by Big Guy on 8/2/2014.
  */
 public class Shop extends FragmentActivity {
+	
+	ArrayAdapter adapterList;
+	StartUpDataBaseAdapter DB;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,17 +36,14 @@ public class Shop extends FragmentActivity {
     }
 
     public void displayItems(int areaNumber){
-//        Bundle bundle = new Bundle();
-//        bundle.putInt("AreaNumber",areaNumber);
+    	
+    	//TODO this is how you use listview make sure findviewbyid is set to your listview name
+//    	List<HashMap<String, String>> nameList = DB.GetShoppingList();
 //
-//        FragmentManager fm = getFragmentManager();
+//		adapterList = new ArrayAdapter<HashMap<String, String>>(this, android.R.layout.simple_list_item_1, nameList);
 //
-//        AreaDialog areaDialog = new AreaDialog();
-//        areaDialog.setArguments(bundle);
-//        areaDialog.show(fm, "AreaDialog");
-
-        TextView tv = (TextView)findViewById(R.id.area_name);
-        tv.setText("Area "+String.valueOf(areaNumber));
+//		ListView listView = (ListView) findViewById(R.id.list_item);
+//		listView.setAdapter(adapterList);
     }
 
     // Handles each area clicked

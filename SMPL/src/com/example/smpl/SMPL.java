@@ -1,5 +1,9 @@
 package com.example.smpl;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Intent;
@@ -7,7 +11,11 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
 import com.application.smpl.database.adapter.StartUpDataBaseAdapter;
 import com.application.smpl.qr_reader.DecoderActivity;
 import com.example.smpl.fragments.AddDialog;
@@ -23,6 +31,7 @@ public class SMPL extends Activity {
 	private boolean mTwoPane;
 	Button dataBase;
 	StartUpDataBaseAdapter DB;
+	static SimpleAdapter  adapterList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,18 +44,22 @@ public class SMPL extends Activity {
 		DB.InsertpTypes();
 		DB.InsertProducts();
 
-//		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-//			// If the screen is now in landscape mode, we can show the
-//			// dialog in-line with the list so we don't need this activity.
-//			// finish();
-//			// todo: check to see if store map fragment is visible, and hide if
-//			// it is
-//			FragmentManager fragmentManager = getFragmentManager();
-//			fragmentManager.beginTransaction();
+		List<HashMap<String, String>> nameList = DB.GetShoppingList();
+
+		adapterList = new SimpleAdapter(this, nameList, R.layout.row ,new String[]{"Product","Quantity"}, new int[]{R.id.first, R.id.second});
+
+		ListView listView = (ListView) findViewById(R.id.listview_grociery_list);
+		listView.setAdapter(adapterList);
+	}
+	
+	public static void updateList()
+	{
+//		List<HashMap<String, String>> nameList = DB.GetShoppingList();
 //
-//		} else {
-//			// todo: inflate both fragments
-//		}
+//		adapterList = new SimpleAdapter(this, nameList, R.layout.row ,new String[]{"Product","Quantity"}, new int[]{R.id.first, R.id.second});
+//
+//		ListView listView = (ListView) findViewById(R.id.listview_grociery_list);
+//		listView.setAdapter(adapterList);
 	}
 
 	@Override
@@ -80,15 +93,13 @@ public class SMPL extends Activity {
 			dialog.show(getFragmentManager(), "AddDialog");
 			return true;
 		} else if (selected == remove) {
-
+			
 		} else if (selected == share) {
 
 		} else if (selected == shop) {
-			Intent intentStart = new Intent(getApplicationContext(),
-					Shop.class);
+			Intent intentStart = new Intent(getApplicationContext(),Shop.class);
 			startActivity(intentStart);
 			getRequestedOrientation();
-//            setContentView(R.layout.activity_main);
 			return true;
 		}
 		// Handle action bar actions click

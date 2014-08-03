@@ -45,7 +45,7 @@
             android:name="com.example.smpl.fragments.AddDialog"
             android:label="@string/app_name" >
         </activity>
-        <activity android:name="com.example.smpl.StoreMap"
+        <activity android:name="com.example.smpl.Shop"
             android:label="Map">
         </activity>
     </application>

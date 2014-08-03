@@ -55,9 +55,6 @@ public class StartUpDataBaseAdapter {
 				count++;
 			}
 		}
-
-		Toast.makeText(instance.context, "Count" + count, Toast.LENGTH_LONG)
-				.show();
      }
 
 	public void InsertpTypes() {		
@@ -114,7 +111,7 @@ public class StartUpDataBaseAdapter {
 			String productId = c.getString(c.getColumnIndex(DBAdapter.MLSLPRODUCTS_COLUMN_MLID));
 			String product = getListProductName(productId);
 			
-			map.put("Quantity: ", itemQuantity);
+			map.put("Quantity", itemQuantity);
 			map.put("Product", String.valueOf(product));
 			mylist.add(map);
 			c.moveToNext();
