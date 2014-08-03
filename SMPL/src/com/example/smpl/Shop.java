@@ -1,14 +1,20 @@
 package com.example.smpl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.application.smpl.database.adapter.StartUpDataBaseAdapter;
+import com.example.smpl.fragments.ProductListFragment;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -19,17 +25,31 @@ import android.widget.TextView;
  */
 public class Shop extends FragmentActivity {
 	
-	ArrayAdapter adapterList;
+	ArrayAdapter<String> adapterList;
 	StartUpDataBaseAdapter DB;
+    ProductListFragment plf;
+    StoreMap sm;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DB = new StartUpDataBaseAdapter(this);
         setContentView(R.layout.activity_main);
+
+
+        List<HashMap<String, String>> nameList = DB.GetShoppingList();
+        ArrayList<String> myList = grocierylist(nameList);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, myList);
+
+        ListView listView = (ListView) findViewById(R.id.list_of_products);
+        listView.setAdapter(adapter);
+
     }
 
     @Override
     public View onCreateView(String name, Context context, AttributeSet attrs) {
+
 
         return super.onCreateView(name, context, attrs);
 
@@ -37,13 +57,8 @@ public class Shop extends FragmentActivity {
 
     public void displayItems(int areaNumber){
     	
-    	//TODO this is how you use listview make sure findviewbyid is set to your listview name
-//    	List<HashMap<String, String>> nameList = DB.GetShoppingList();
-//
-//		adapterList = new ArrayAdapter<HashMap<String, String>>(this, android.R.layout.simple_list_item_1, nameList);
-//
-//		ListView listView = (ListView) findViewById(R.id.list_item);
-//		listView.setAdapter(adapterList);
+
+
     }
 
     // Handles each area clicked
@@ -53,6 +68,7 @@ public class Shop extends FragmentActivity {
         switch (view.getId()) {
             case R.id.area_1:
                 displayItems(1);
+                Log.d("blah", "area still works");
                 break;
             case R.id.area_2:
                 displayItems(2);
@@ -83,5 +99,36 @@ public class Shop extends FragmentActivity {
                 break;
         }
     }
+
+    private ArrayList<String> grocierylist(List<HashMap<String, String>> nameList)
+    {
+        ArrayList<String> arrayList = new ArrayList<String>();
+        boolean flag = true;
+        if (nameList != null) {
+            for (HashMap<String, String> map : nameList) {
+                String item = "";
+                String quantity = "";
+                for (Map.Entry<String, String> mapEntry : map.entrySet()) {
+                    if (flag) {
+                        item = mapEntry.getValue();
+                        flag = false;
+                    } else {
+                        quantity = mapEntry.getValue();
+                        flag = true;
+                    }
+                }
+                if(Integer.parseInt(quantity) > 1)
+                {
+                    arrayList.add(quantity + " " + item + "(s)");
+                }
+                else
+                {
+                    arrayList.add(quantity + " " + item);
+                }
+            }
+        }
+        return arrayList;
+    }
+
 
 }
