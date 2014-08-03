@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="qrcodereaderview-lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/QRCodeReaderView-lib/bin/qrcodereaderview-lib.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
