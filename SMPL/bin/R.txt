@@ -263,7 +263,6 @@ int id area_6 0x7f070059
 int id area_7 0x7f07005a
 int id area_8 0x7f07005b
 int id area_9 0x7f07005c
-int id area_name 0x7f07004e
 int id back_row 0x7f070052
 int id beginning 0x7f070011
 int id button_dbdebuger_allproducts 0x7f07003c
@@ -291,6 +290,7 @@ int id image 0x7f070027
 int id listMode 0x7f070001
 int id listView_dbdebugger 0x7f07003f
 int id list_item 0x7f070029
+int id list_product 0x7f07004e
 int id listview_grociery_list 0x7f070046
 int id menu_settings 0x7f07005e
 int id middle 0x7f070012

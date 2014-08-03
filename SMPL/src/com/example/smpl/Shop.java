@@ -25,6 +25,7 @@ public class Shop extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DB = new StartUpDataBaseAdapter(this);
         setContentView(R.layout.activity_main);
     }
 
@@ -38,12 +39,12 @@ public class Shop extends FragmentActivity {
     public void displayItems(int areaNumber){
     	
     	//TODO this is how you use listview make sure findviewbyid is set to your listview name
-//    	List<HashMap<String, String>> nameList = DB.GetShoppingList();
-//
-//		adapterList = new ArrayAdapter<HashMap<String, String>>(this, android.R.layout.simple_list_item_1, nameList);
-//
-//		ListView listView = (ListView) findViewById(R.id.list_item);
-//		listView.setAdapter(adapterList);
+    	List<HashMap<String, String>> nameList = DB.GetShoppingList();
+
+		adapterList = new ArrayAdapter<HashMap<String, String>>(this, android.R.layout.simple_list_item_1, nameList);
+
+		ListView listView = (ListView) findViewById(R.id.list_product);
+		listView.setAdapter(adapterList);
     }
 
     // Handles each area clicked

@@ -6,14 +6,14 @@
     android:paddingLeft="8dp"
     android:paddingRight="8dp">
 
-    <ListView android:id="@id/android:list"
+    <ListView android:id="@+id/list_product"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:drawSelectorOnTop="false"/>
 
-    <TextView android:id="@+id/area_name"
+<!--     <TextView android:id="@+id/area_name"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text=""/>
+        android:text=""/> -->
 </LinearLayout>
