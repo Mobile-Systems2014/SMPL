@@ -6,11 +6,5 @@
         android:orderInCategory="100"
         android:showAsAction="always"
         android:title="QR Scanner"/>
-    
-    <item
-        android:id="@+id/action_dbdebug"
-        android:orderInCategory="100"
-        android:showAsAction="always"
-        android:title="Debuger"/>
 
 </menu>

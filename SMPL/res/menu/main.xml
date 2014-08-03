@@ -5,7 +5,7 @@
         android:id="@+id/action_actions"
         android:orderInCategory="100"
         android:showAsAction="always"
-          android:title="List">
+        android:title="List">
         <menu>
             <item
                 android:id="@+id/action_add"
@@ -15,9 +15,13 @@
                 android:id="@+id/action_remove"
                 android:orderInCategory="100"
                 android:title="Remove"/>
+            <item
+                android:id="@+id/action_dbdebug"
+                android:orderInCategory="100"
+                android:showAsAction="always"
+                android:title="Debuger"/>
         </menu>
     </item>
-    
     <item
         android:id="@+id/action_share"
         android:orderInCategory="100"
