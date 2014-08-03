@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="smpl_background">#e6cc80</color>
+    <color name="smpl_loading_screen">#000000</color>
 
 </resources>

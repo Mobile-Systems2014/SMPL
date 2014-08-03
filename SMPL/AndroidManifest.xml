@@ -16,6 +16,17 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
+            android:name="com.example.smpl.SplashScreen"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name="com.example.smpl.SMPL"
             android:label="@string/app_name" >
             <intent-filter>
@@ -48,6 +59,7 @@
         <activity android:name="com.example.smpl.Shop"
             android:label="Map">
         </activity>
+
     </application>
 
 </manifest>

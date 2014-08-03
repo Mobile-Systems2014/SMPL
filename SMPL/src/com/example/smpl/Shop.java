@@ -24,18 +24,14 @@ import android.widget.TextView;
  * Created by Big Guy on 8/2/2014.
  */
 public class Shop extends FragmentActivity {
-	
-	ArrayAdapter<String> adapterList;
+
 	StartUpDataBaseAdapter DB;
-    ProductListFragment plf;
-    StoreMap sm;
-	
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DB = new StartUpDataBaseAdapter(this);
         setContentView(R.layout.activity_main);
-
 
         List<HashMap<String, String>> nameList = DB.GetShoppingList();
         ArrayList<String> myList = grocierylist(nameList);
@@ -49,15 +45,11 @@ public class Shop extends FragmentActivity {
 
     @Override
     public View onCreateView(String name, Context context, AttributeSet attrs) {
-
-
         return super.onCreateView(name, context, attrs);
 
     }
 
     public void displayItems(int areaNumber){
-    	
-
 
     }
 
