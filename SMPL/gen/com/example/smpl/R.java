@@ -1042,7 +1042,7 @@ containing a value of this type.
         public static final int listMode=0x7f070001;
         public static final int listView_dbdebugger=0x7f07003f;
         public static final int list_item=0x7f070029;
-        public static final int list_product=0x7f07004e;
+        public static final int list_of_products=0x7f07004e;
         public static final int listview_grociery_list=0x7f070046;
         public static final int menu_settings=0x7f07005e;
         public static final int middle=0x7f070012;

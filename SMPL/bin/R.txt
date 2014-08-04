@@ -290,7 +290,7 @@ int id image 0x7f070027
 int id listMode 0x7f070001
 int id listView_dbdebugger 0x7f07003f
 int id list_item 0x7f070029
-int id list_product 0x7f07004e
+int id list_of_products 0x7f07004e
 int id listview_grociery_list 0x7f070046
 int id menu_settings 0x7f07005e
 int id middle 0x7f070012
