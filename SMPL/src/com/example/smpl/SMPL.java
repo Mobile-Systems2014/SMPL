@@ -1,5 +1,6 @@
 package com.example.smpl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -95,6 +96,16 @@ public class SMPL extends Activity {
 		} else if (selected == remove) {
 			
 		} else if (selected == share) {
+            //get list and send in email
+            ArrayList<String> emailList = grocierylist(DB.GetShoppingList());
+
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+
+            intent.putExtra(Intent.EXTRA_SUBJECT, "My Grocery List");
+            intent.putExtra(Intent.EXTRA_TEXT, emailList.toString());
+
+            startActivity(Intent.createChooser(intent, "Send Grocery List"));
 
 		} else if (selected == shop) {
 			Intent intentStart = new Intent(getApplicationContext(),Shop.class);
@@ -110,4 +121,34 @@ public class SMPL extends Activity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
+
+    private ArrayList<String> grocierylist(List<HashMap<String, String>> nameList)
+    {
+        ArrayList<String> arrayList = new ArrayList<String>();
+        boolean flag = true;
+        if (nameList != null) {
+            for (HashMap<String, String> map : nameList) {
+                String item = "";
+                String quantity = "";
+                for (Map.Entry<String, String> mapEntry : map.entrySet()) {
+                    if (flag) {
+                        item = mapEntry.getValue();
+                        flag = false;
+                    } else {
+                        quantity = mapEntry.getValue();
+                        flag = true;
+                    }
+                }
+                if(Integer.parseInt(quantity) > 1)
+                {
+                    arrayList.add(quantity + " " + item + "(s)");
+                }
+                else
+                {
+                    arrayList.add(quantity + " " + item);
+                }
+            }
+        }
+        return arrayList;
+    }
 }

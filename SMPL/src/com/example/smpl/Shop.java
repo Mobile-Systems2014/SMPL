@@ -16,6 +16,7 @@ import android.support.v4.app.FragmentActivity;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -34,12 +35,18 @@ public class Shop extends FragmentActivity {
         setContentView(R.layout.activity_main);
 
         List<HashMap<String, String>> nameList = DB.GetShoppingList();
-        ArrayList<String> myList = grocierylist(nameList);
+        final ArrayList<String> myList = grocierylist(nameList);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, myList);
 
         ListView listView = (ListView) findViewById(R.id.list_of_products);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                myList.get(position);
+            }
+        });
 
     }
 
