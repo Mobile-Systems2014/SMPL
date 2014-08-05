@@ -14,6 +14,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -48,46 +49,12 @@ public class SMPL extends Activity {
 		DB.InsertpTypes();
 		DB.InsertProducts();
 
-/*		List<HashMap<String, String>> nameList = DB.GetShoppingList();
-		
-		ArrayList<String> myList = grocierylist(nameList);
-				
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, myList);
+        WebView webview = new WebView(this);
+        setContentView(webview);
+        webview.loadUrl("http://omega.uta.edu/~cxr3506/SMPL/");
 
-		ListView listView = (ListView) findViewById(R.id.listview_grociery_list);
-		listView.setAdapter(adapter);*/
 	}
-	
-	/*private ArrayList<String> grocierylist(List<HashMap<String, String>> nameList)
-	{
-		ArrayList<String> arrayList = new ArrayList<String>();
-		boolean flag = true;
-		if (nameList != null) {
-			for (HashMap<String, String> map : nameList) {
-				String item = "";
-				String quantity = "";
-				for (Entry<String, String> mapEntry : map.entrySet()) {
-					if (flag) {
-						item = mapEntry.getValue();
-						flag = false;
-					} else {
-						quantity = mapEntry.getValue();
-						flag = true;
-					}
-				}
-				if(Integer.parseInt(quantity) > 1)
-				{
-					arrayList.add(quantity + "     " + item + "(s)");
-				}
-				else
-				{
-					arrayList.add(quantity + "     " + item);
-				}
-			}
-		}
-		return arrayList;
-	}*/
-	
+
 	public static void updateList()
 	{
 //		List<HashMap<String, String>> nameList = DB.GetShoppingList();
