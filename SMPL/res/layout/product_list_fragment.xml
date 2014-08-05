@@ -10,7 +10,7 @@
         android:id="@+id/list_of_products"
         android:layout_width="match_parent"
         android:layout_height="385dp"
-        android:drawSelectorOnTop="false" />
+        android:choiceMode="multipleChoice" />
 
     <RelativeLayout
         android:layout_width="match_parent"

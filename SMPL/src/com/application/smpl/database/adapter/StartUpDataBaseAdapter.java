@@ -131,11 +131,7 @@ public class StartUpDataBaseAdapter {
 		return mylist;
 	}
 
-	public String GetShoppingListByIsle() {
 
-		return "toDo";
-
-	}
 
 	public void SaveToList(String product) {
 		int id = GetProduct(product);
@@ -293,24 +289,7 @@ public class StartUpDataBaseAdapter {
 			c.moveToNext();
 		}
 		return name;
-	}
-
-	public String getListProductIsle(String pId) {
-		String name = "";
-		Cursor c = db.query(DBAdapter.TABLE_MASTERLISTOFPRODUCTS, null,
-				"MLID=?", new String[] { String.valueOf(pId) }, null, null,
-				null);
-		if (c != null) {
-			c.moveToFirst();
-		}
-
-		while (c.isAfterLast() == false) {
-			name = c.getString(c
-					.getColumnIndex(DBAdapter.MASTERLISTOFPRODUCTS_COLUMN_ISLE));
-			c.moveToNext();
-		}
-		return name;
-	}
+	}	
 
 	public int deleteEntry(String UserName) {
 		String where = "USERNAME=?";

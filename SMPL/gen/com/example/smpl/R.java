@@ -987,8 +987,8 @@ containing a value of this type.
     public static final class id {
         public static final int FirstText=0x7f07004d;
         public static final int SecondText=0x7f07004e;
-        public static final int action_actions=0x7f070061;
-        public static final int action_add=0x7f070062;
+        public static final int action_actions=0x7f070063;
+        public static final int action_add=0x7f070064;
         public static final int action_bar=0x7f07001c;
         public static final int action_bar_activity_content=0x7f070015;
         public static final int action_bar_container=0x7f07001b;
@@ -997,14 +997,14 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f070023;
         public static final int action_bar_title=0x7f070022;
         public static final int action_context_bar=0x7f07001d;
-        public static final int action_dbdebug=0x7f070064;
+        public static final int action_dbdebug=0x7f070066;
         public static final int action_menu_divider=0x7f070016;
         public static final int action_menu_presenter=0x7f070017;
         public static final int action_mode_close_button=0x7f070024;
-        public static final int action_remove=0x7f070063;
-        public static final int action_scanner=0x7f070067;
-        public static final int action_share=0x7f070065;
-        public static final int action_shop=0x7f070066;
+        public static final int action_remove=0x7f070065;
+        public static final int action_scanner=0x7f070069;
+        public static final int action_share=0x7f070067;
+        public static final int action_shop=0x7f070068;
         public static final int activity_chooser_view_content=0x7f070025;
         public static final int always=0x7f07000b;
         public static final int area_1=0x7f070055;
@@ -1024,7 +1024,9 @@ containing a value of this type.
         public static final int button_dbdebuger_total=0x7f07003e;
         public static final int button_qrsave=0x7f070041;
         public static final int center_aisle=0x7f070059;
+        public static final int checkBox1=0x7f070060;
         public static final int checkbox=0x7f07002d;
+        public static final int code=0x7f070061;
         public static final int collapseActionView=0x7f07000d;
         public static final int default_activity_button=0x7f070028;
         public static final int dialog=0x7f07000e;
@@ -1047,7 +1049,7 @@ containing a value of this type.
         public static final int list_item=0x7f070029;
         public static final int list_of_products=0x7f07004f;
         public static final int listview_grociery_list=0x7f070046;
-        public static final int menu_settings=0x7f070060;
+        public static final int menu_settings=0x7f070062;
         public static final int middle=0x7f070012;
         public static final int never=0x7f070009;
         public static final int none=0x7f070010;
@@ -1168,6 +1170,7 @@ containing a value of this type.
         public static final int row=0x7f030022;
         public static final int store_map=0x7f030023;
         public static final int support_simple_spinner_dropdown_item=0x7f030024;
+        public static final int viewboxchecked=0x7f030025;
     }
     public static final class menu {
         public static final int activity_decoder=0x7f0d0000;

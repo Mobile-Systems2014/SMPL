@@ -12,9 +12,13 @@ import android.support.v4.app.FragmentActivity;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by Big Guy on 8/2/2014.
@@ -32,17 +36,20 @@ public class Shop extends FragmentActivity {
 		List<HashMap<String, String>> nameList = DB.GetShoppingList();
 		ArrayList<String> myList = grocierylist(nameList);
 
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+		ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_multiple_choice, myList);
 
-		ListView listView = (ListView) findViewById(R.id.list_of_products);
-		listView.setAdapter(adapter);
-		
+		// Getting the reference to the listview object of the layout
+		ListView listView1 = (ListView) findViewById(R.id.list_of_products);
+
+		// Setting adapter to the listview
+		listView1.setAdapter(adapter1);
+
 		double total = DB.GetTotal();
-        DecimalFormat format = new DecimalFormat("##.00");
-		
-		TextView textTotal = new TextView(this);  
-		textTotal = (TextView)findViewById(R.id.text_shopping);
+		DecimalFormat format = new DecimalFormat("##.00");
+
+		TextView textTotal = new TextView(this);
+		textTotal = (TextView) findViewById(R.id.text_shopping);
 		textTotal.setText("$" + format.format(total));
 
 	}
