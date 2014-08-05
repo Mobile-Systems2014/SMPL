@@ -22,6 +22,9 @@ import android.widget.TextView;
 public class Shop extends FragmentActivity {
 
 	StartUpDataBaseAdapter DB;
+    HashMap<Integer,String> areaList = new HashMap<Integer,String>();
+    ArrayList<String> listToCompare;
+    ArrayAdapter<String> mainAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +32,23 @@ public class Shop extends FragmentActivity {
 		DB = new StartUpDataBaseAdapter(this);
 		setContentView(R.layout.activity_main);
 
+        areaList.put(1,"apple");
+        areaList.put(2,"bread");
+        areaList.put(3,"pizza");
+        areaList.put(10,"orange");
+        areaList.put(4," milk ; eggs ; butter ");
+        areaList.put(7,"chicken");
+        areaList.put(5,"fish");
+        areaList.put(6,"sprite");
+        areaList.put(8,"none");
+        areaList.put(9,"none");
+
 		List<HashMap<String, String>> nameList = DB.GetShoppingList();
 		ArrayList<String> myList = grocierylist(nameList);
+        listToCompare = new ArrayList<String>(myList);
+        listToCompare.add("milk");
+        listToCompare.add("eggs");
+        listToCompare.add("butter");
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_multiple_choice, myList);
@@ -54,8 +72,37 @@ public class Shop extends FragmentActivity {
 	}
 
 	public void displayItems(int areaNumber) {
+        String product = areaList.get(areaNumber);
+
+        ArrayList<String> displayList = new ArrayList<String>();
+
+        if (product.equals("none")){
+            displayList.add("No item(s)");
+        } else {
+
+            for (String current : listToCompare) {
+                if (current.contains(product)) {
+                    displayList.add(current);
+                }
+                else if (product.contains(current)) {
+                    displayList.add(current);
+                }
+            }
+            if (displayList.isEmpty() || "".equals(product)) {
+                displayList.add("No item(s)");
+            }
+        }
+        mainAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, displayList);
+
+        ListView listView = (ListView) findViewById(R.id.list_of_products);
+        listView.setAdapter(mainAdapter);
 
 	}
+
+    public void refresh() {
+
+    }
 
 	// Handles each area clicked
 
