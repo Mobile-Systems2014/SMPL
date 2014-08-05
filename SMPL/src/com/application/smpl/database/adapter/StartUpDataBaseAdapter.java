@@ -217,8 +217,6 @@ public class StartUpDataBaseAdapter {
 						.getColumnIndex(DBAdapter.MASTERLISTOFPRODUCTS_COLUMN_PRODUCTNAME));
 		cursor.close();
 
-		Toast.makeText(instance.context, "Added    " + productName,
-				Toast.LENGTH_LONG).show();
 		return id;
 	}
 

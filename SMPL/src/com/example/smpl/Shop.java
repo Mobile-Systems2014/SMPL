@@ -1,5 +1,6 @@
 package com.example.smpl;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 /**
  * Created by Big Guy on 8/2/2014.
@@ -31,10 +33,17 @@ public class Shop extends FragmentActivity {
 		ArrayList<String> myList = grocierylist(nameList);
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, myList);
+				android.R.layout.simple_list_item_multiple_choice, myList);
 
 		ListView listView = (ListView) findViewById(R.id.list_of_products);
 		listView.setAdapter(adapter);
+		
+		double total = DB.GetTotal();
+        DecimalFormat format = new DecimalFormat("##.00");
+		
+		TextView textTotal = new TextView(this);  
+		textTotal = (TextView)findViewById(R.id.text_shopping);
+		textTotal.setText("$" + format.format(total));
 
 	}
 
